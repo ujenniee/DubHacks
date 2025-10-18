@@ -14,7 +14,7 @@
                 <li><a href="#download">Download Chrome </a></li>
                 <li><a href="#contact">Build Resume</a></li>
                 <li><a href="jobFinder.html">Job Finder</a></li>
-                <li><a href="jobFinder.html">Sign Up</a></li>
+                <li><a href="signUp.html">Sign Up</a></li>
             </ul>
         </div>
     </nav>
@@ -60,8 +60,26 @@
         <!-- Submit Button -->
         <button type="submit" class="submit-btn">Submit Application</button>
       </div>
-
     </form>
   </div>
 </section>
+<script>
+  // Select the form
+  const applicationForm = document.querySelector('.application-form');
+
+  // Listen for submission
+  applicationForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // prevent page reload
+
+    // Optional: you could gather form data here if needed
+    const name = document.getElementById('fullName').value;
+
+    // Show a notification message
+    alert(`Thank you, ${name}! Your application has been submitted successfully.`);
+
+    // Optionally clear the form after submission
+    applicationForm.reset();
+  });
+</script>
+
 </body>

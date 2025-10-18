@@ -1,64 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Navbar</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NextStep - Sign Up</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="home.html" class="logo">NextStep</a>
-            <ul class="nav-links">
-                <li><a href="#download">Download Chrome </a></li>
-                <li><a href="#contact">Build Resume</a></li>
-                <li><a href="jobFinder.html">Job Finder</a></li>
-                <li><a href="jobFinder.html">Sign Up</a></li>
-            </ul>
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="home.html" class="logo">NextStep</a>
+      <ul class="nav-links">
+        <li><a href="#download">Download Chrome</a></li>
+        <li><a href="#contact">Build Resume</a></li>
+        <li><a href="jobFinder.html">Job Finder</a></li>
+        <li><a href="signUp.html">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="signup-section">
+    <div class="signup-container">
+      <h1 class="signup-title">Create an Account</h1>
+      <p class="signup-subtitle">Sign up to apply for jobs and manage your applications.</p>
+
+      <form class="signup-form" id="signupForm">
+        <div class="form-box">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Create a password" required>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+          </div>
+
+          <button type="submit" class="submit-btn">Sign Up</button>
+
+          <p style="text-align:center; margin-top:1rem;">
+            Already have an account?
+            <a href="login.html" style="color:#667eea;">Log In</a>
+          </p>
         </div>
-    </nav>
-    <section class="signup-section">
-  <div class="signup-container">
-    <h1 class="signup-title">Create an Account</h1>
-    <p class="signup-subtitle">Sign up to apply for jobs and manage your applications.</p>
+      </form>
+    </div>
+  </section>
 
-    <form class="signup-form" action="#" method="post">
+<script>
+  document.getElementById('signupForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const fullName = document.getElementById('fullName').value;
+    const email = document.getElementById('email').value;
 
-      <div class="form-box">
-        <!-- Full Name -->
-        <div class="form-group">
-          <label for="fullName">Full Name</label>
-          <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
-        </div>
+    // Save user info in localStorage
+    localStorage.setItem('nextStepUser', fullName || email);
 
-        <!-- Email -->
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" required>
-        </div>
-
-        <!-- Password -->
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Create a password" required>
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="form-group">
-          <label for="confirmPassword">Confirm Password</label>
-          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="submit-btn">Sign Up</button>
-
-        <!-- Login Link -->
-        <p style="text-align:center; margin-top:1rem;">Already have an account? <a href="login.html" style="color:#667eea;">Log In</a></p>
-      </div>
-
-    </form>
-  </div>
-</section>
-
+    alert('Welcome to NextStep!');
+    window.location.href = 'home.html';
+  });
+</script>
 </body>
+</html>

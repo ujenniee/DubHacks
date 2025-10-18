@@ -1,4 +1,11 @@
 /* tam's css */
+
+.user-display {
+  margin-left: 1rem;
+  color: white;
+  font-weight: 600;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -80,6 +87,21 @@ nav {
     margin-bottom: 3rem;
     font-weight: 700;
 }
+
+/* card image */
+.card-image {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.card-image img {
+  width: 100px; /* adjust width */
+  height: 80px; /* adjust height */
+  object-fit: cover;
+  border-radius: 12px; /* gives it the rounded rectangle look */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
 
 .cards-container {
     position: relative;
