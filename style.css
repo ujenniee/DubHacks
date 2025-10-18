@@ -282,7 +282,6 @@ nav {
 
 
 
-
 .hero-subtitle, .upload-subtitle {
     font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.9);
@@ -611,6 +610,7 @@ nav {
     font-weight: 600;
     cursor: pointer;
     transition: transform 0.3s ease;
+     text-decoration: none;      
 }
 
 .apply-btn:hover {
@@ -692,6 +692,106 @@ nav {
     font-weight: 600;
     cursor: pointer
 }
+
+/* application */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.job-application {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4rem 2rem;
+  color: white;
+}
+
+.application-container {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+.application-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.application-subtitle {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: #e2e8f0;
+}
+
+/* White rounded box */
+.form-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  text-align: left;
+  color: #2d3748;
+}
+
+.application-form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.application-form label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.application-form input,
+.application-form textarea {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 2px solid #e2e8f0;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.application-form input:focus,
+.application-form textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .application-container {
+    padding: 0 1rem;
+  }
+
+  .application-title {
+    font-size: 2rem;
+  }
+}
+
 
 /* Footer */
 footer {
