@@ -17,7 +17,246 @@
             </ul>
         </div>
     </nav>
+    <section class="upload-resume">
+    <div class="overlay-text">COMING SOON</div> <!-- new overlay text -->
     
+    <div class="upload-content">
+        <h1 class="upload-title">Upload your resume here</h1>
+        <p class="upload-subtitle">Supported formats: PDF, DOCX</p>
+        
+        <form class="upload-form" action="#" method="post" enctype="multipart/form-data">
+        <input type="file" name="resume" id="resume" class="file-input" accept=".pdf,.doc,.docx" required>
+        <button type="submit" class="upload-btn">Upload</button>
+        </form>
+    </div>
+    </section>
+
+
+         </section>
+       <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Find Your Dream Job</h1>
+            <p class="hero-subtitle">Empowering first-generation immigrants with tools and resources to succeed</p>
+        </div>
+    </section>
+
+    <!-- Progress Tracker -->
+    <section class="progress-section">
+        <div class="container">
+            <div class="progress-card">
+                <h3>Your Profile Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 60%"></div>
+                </div>
+                <p class="progress-text">60% Complete - Add work experience to improve matches!</p>
+                <div class="badges">
+                    <span class="badge earned">✓ Profile Created</span>
+                    <span class="badge earned">✓ Resume Uploaded</span>
+                    <span class="badge">Skills Added</span>
+                    <span class="badge">First Application</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Search & Filters -->
+    <section class="search-section">
+        <div class="container">
+            <h2 class="section-title">Search Jobs</h2>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" placeholder="Job title, keywords, or company..." class="search-input">
+                    <button class="search-btn">Search</button>
+                </div>
+                
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label>Location</label>
+                        <select class="filter-select">
+                            <option>Any Location</option>
+                            <option>Remote</option>
+                            <option>New York, NY</option>
+                            <option>San Francisco, CA</option>
+                            <option>Seattle, WA</option>
+                            <option>Austin, TX</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Industry</label>
+                        <select class="filter-select">
+                            <option>All Industries</option>
+                            <option>Technology</option>
+                            <option>Healthcare</option>
+                            <option>Education</option>
+                            <option>Finance</option>
+                            <option>Marketing</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Experience Level</label>
+                        <select class="filter-select">
+                            <option>All Levels</option>
+                            <option>Entry Level</option>
+                            <option>Mid Level</option>
+                            <option>Senior Level</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Work Authorization</label>
+                        <select class="filter-select">
+                            <option>All Options</option>
+                            <option>Visa Sponsorship Available</option>
+                            <option>Accepts International Applicants</option>
+                            <option>US Citizens Only</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Job Alerts -->
+            <div class="alert-box">
+                <div class="alert-content">
+                    <h4>🔔 Set Job Alerts</h4>
+                    <p>Get notified when new jobs match your preferences</p>
+                </div>
+                <button class="alert-btn">Create Alert</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Match Widget -->
+    <section class="match-section">
+        <div class="container">
+            <div class="match-widget">
+                <h3>Jobs Matched to Your Skills</h3>
+                <p class="match-subtitle">Based on your profile, we found 47 opportunities perfect for you!</p>
+                <div class="match-stats">
+                    <div class="stat">
+                        <span class="stat-number">47</span>
+                        <span class="stat-label">Perfect Matches</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">With Visa Support</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">89%</span>
+                        <span class="stat-label">Profile Strength</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Listings -->
+    <section class="jobs-section">
+        <div class="container">
+            <h2 class="section-title">Recommended Jobs</h2>
+            
+            <div class="job-card">
+                <div class="job-header">
+                    <div class="job-info">
+                        <h3 class="job-title">Software Engineer</h3>
+                        <p class="job-company">Tech Innovations Inc.</p>
+                        <p class="job-location">📍 San Francisco, CA (Remote Available)</p>
+                    </div>
+                    <span class="visa-badge">Visa Sponsorship</span>
+                </div>
+                <p class="job-description">
+                    Looking for a talented software engineer to join our growing team. Experience with React, Node.js, and cloud technologies preferred.
+                </p>
+                <div class="job-footer">
+                    <span class="job-tag">Entry Level</span>
+                    <span class="job-tag">Technology</span>
+                    <span class="job-posted">Posted 2 days ago</span>
+                    <button class="apply-btn">Apply Now</button>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <div class="job-info">
+                        <h3 class="job-title">Data Analyst</h3>
+                        <p class="job-company">Healthcare Solutions LLC</p>
+                        <p class="job-location">📍 New York, NY</p>
+                    </div>
+                    <span class="visa-badge">International Welcome</span>
+                </div>
+                <p class="job-description">
+                    Analyze healthcare data to improve patient outcomes. Strong SQL and Python skills required. Experience with Tableau a plus.
+                </p>
+                <div class="job-footer">
+                    <span class="job-tag">Mid Level</span>
+                    <span class="job-tag">Healthcare</span>
+                    <span class="job-posted">Posted 5 days ago</span>
+                    <button class="apply-btn">Apply Now</button>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <div class="job-info">
+                        <h3 class="job-title">Marketing Coordinator</h3>
+                        <p class="job-company">Global Marketing Group</p>
+                        <p class="job-location">📍 Remote</p>
+                    </div>
+                </div>
+                <p class="job-description">
+                    Coordinate marketing campaigns across multiple channels. Excellent communication skills and creative thinking required.
+                </p>
+                <div class="job-footer">
+                    <span class="job-tag">Entry Level</span>
+                    <span class="job-tag">Marketing</span>
+                    <span class="job-posted">Posted 1 week ago</span>
+                    <button class="apply-btn">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Tracking -->
+    <section class="tracking-section">
+        <div class="container">
+            <h2 class="section-title">Your Applications</h2>
+            <div class="tracking-grid">
+                <div class="tracking-card">
+                    <div class="tracking-header">
+                        <h4>Software Developer</h4>
+                        <span class="status-badge status-interview">Interview Scheduled</span>
+                    </div>
+                    <p class="tracking-company">Tech Corp</p>
+                    <p class="tracking-date">Applied: Jan 15, 2025</p>
+                    <button class="reminder-btn">Set Reminder</button>
+                </div>
+
+                <div class="tracking-card">
+                    <div class="tracking-header">
+                        <h4>Business Analyst</h4>
+                        <span class="status-badge status-applied">Application Sent</span>
+                    </div>
+                    <p class="tracking-company">Finance Solutions</p>
+                    <p class="tracking-date">Applied: Jan 18, 2025</p>
+                    <button class="reminder-btn">Set Reminder</button>
+                </div>
+
+                <div class="tracking-card">
+                    <div class="tracking-header">
+                        <h4>Project Manager</h4>
+                        <span class="status-badge status-offer">Offer Received</span>
+                    </div>
+                    <p class="tracking-company">Innovation Labs</p>
+                    <p class="tracking-date">Applied: Jan 10, 2025</p>
+                    <button class="reminder-btn">View Offer</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    </section>
+
 </body>
     <!-- Footer -->
     <footer>
