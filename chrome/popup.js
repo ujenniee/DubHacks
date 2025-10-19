@@ -69,7 +69,7 @@ async function translatePopupUI(lang) {
   const askButton = document.getElementById("openAI");
 
   const texts = {
-    title: "Immigrant Assistant",
+    title: "NextStep Assistant",
     labelLang: "Language:",
     labelToggle: "Enable Extension",
     askButton: "Ask Assistant 💬",
