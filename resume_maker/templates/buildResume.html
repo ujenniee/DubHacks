@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Builder</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='builder.css') }}">
+</head>
+
+<body>
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="/home" class="logo">NextStep</a>
+      <ul class="nav-links">
+git         <li><a href="/">Build Resume</a></li>
+        <li><a href="/jobFinder">Job Finder</a></li>
+        <li><a href="/signUp">Sign Up</a></li>
+        <li class="language-dropdown">
+          <a href="#">Language ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">English</a></li>
+            <li><a href="#">Spanish</a></li>
+            <li><a href="#">French</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Resume Builder</h1>
+    <form id="resumeForm" method="POST" action="/generate">
+      <label>Name:</label>
+      <input type="text" name="name" required>
+
+      <label>Email:</label>
+      <input type="email" name="email" required>
+
+      <label>School:</label>
+      <input type="text" name="school" required>
+
+      <label>Summary:</label>
+      <textarea name="summary" rows="4" required></textarea>
+
+      <label>Experiences (comma-separated):</label>
+      <textarea name="experiences" rows="4" required></textarea>
+
+      <label>Language Code (e.g., es, fr, zh):</label>
+      <input type="text" name="src_lang" required>
+
+      <button type="submit">Generate Resume</button>
+    </form>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
