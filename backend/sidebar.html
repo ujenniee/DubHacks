@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assistant</title>
+  <link rel="stylesheet" href="sidebar.css" />
+</head>
+<body>
+  <div id="assistant">
+    <button id="close-sidebar">✖</button>
+    <h2>Hi, I'm your Assistant!</h2>
+    <textarea id="input" placeholder="Ask me anything..."></textarea>
+    <button id="send">Send</button>
+    <div id="response"></div>
+  </div>
+
+  <script>
+    const assistant = document.getElementById("assistant");
+    const closeBtn = document.getElementById("close-sidebar");
+
+    // Toggle collapsed state
+    closeBtn.onclick = (e) => {
+      e.stopPropagation(); // prevent bubbling
+      assistant.classList.toggle("collapsed");
+    };
+
+    // Click collapsed assistant to expand
+    assistant.addEventListener("click", () => {
+      if (assistant.classList.contains("collapsed")) {
+        assistant.classList.remove("collapsed");
+      }
+    });
+
+    // Send message to server
+    document.getElementById("send").onclick = async () => {
+      const input = document.getElementById("input").value;
+      const responseBox = document.getElementById("response");
+      responseBox.textContent = "Thinking...";
+
+      try {
+        const res = await fetch("http://localhost:3000/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: input })
+        });
+
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        const data = await res.json();
+        responseBox.textContent = data.reply || "No response.";
+        document.getElementById("input").value = "";
+
+      } catch (err) {
+        responseBox.textContent = "Error: " + err.message;
+      }
+    };
+  </script>
+</body>
+</html>
