@@ -24,7 +24,7 @@
     <h1 class="application-title">Job Application</h1>
     <p class="application-subtitle">Please fill out the form below to apply.</p>
 
-    <form class="application-form" action="#" method="post" enctype="multipart/form-data">
+    <form class="application-form" id="applicationForm" action="#" method="post" enctype="multipart/form-data">
       
       <div class="form-box">
         <!-- Full Name -->
@@ -59,27 +59,28 @@
 
         <!-- Submit Button -->
         <button type="submit" class="submit-btn">Submit Application</button>
+
       </div>
     </form>
   </div>
 </section>
-<script>
-  // Select the form
-  const applicationForm = document.querySelector('.application-form');
+    <script>
+        // Select the form
+        const applicationForm = document.getElementById('applicationForm');
 
-  // Listen for submission
-  applicationForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // prevent page reload
+        // Listen for submission
+        applicationForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // prevent default form submission
 
-    // Optional: you could gather form data here if needed
-    const name = document.getElementById('fullName').value;
+            // Get the applicant's name
+            const name = document.getElementById('fullName').value;
 
-    // Show a notification message
-    alert(`Thank you, ${name}! Your application has been submitted successfully.`);
+            // Show alert
+            alert(`Thank you, ${name}! Your application has been submitted successfully.`);
 
-    // Optionally clear the form after submission
-    applicationForm.reset();
-  });
-</script>
-
+            // Redirect to jobFinder.html after user closes the alert
+            window.location.href = 'jobFinder.html';
+        });
+    </script>
 </body>
+</html>
