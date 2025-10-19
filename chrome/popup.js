@@ -66,8 +66,11 @@ async function translatePopupUI(lang) {
     // skip elements marked "data-no-translate"
     if (el.hasAttribute("data-no-translate")) continue;
 
+<<<<<<< HEAD
+=======
     const original = el.dataset.originalText || el.textContent;
     el.dataset.originalText = original;
+>>>>>>> 7a53aee664b8adbe7fe0d01010ca5a5e9dc07df2
 
     try {
       el.textContent = await translateTextPopup(original, lang);

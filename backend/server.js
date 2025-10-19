@@ -1,11 +1,18 @@
 const express = require("express");
 const fetch = require("node-fetch");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
+
+// Allow requests from any origin
 app.use(cors({ origin: "*", methods: ["POST"], allowedHeaders: ["Content-Type"] }));
 app.use(express.json());
 
+// ✅ Serve all static files (like assist.html and sidebar/sidebar.html)
+app.use(express.static(path.join(__dirname)));
+
+// API endpoint for your local AI
 app.post("/api/chat", async (req, res) => {
   const userMessage = req.body.message;
   if (!userMessage?.trim()) return res.status(400).json({ error: "Message cannot be empty." });
@@ -35,7 +42,7 @@ Do not explain anything further.
     const data = await response.json();
     let reply = data.choices?.[0]?.message?.content || "No response from local AI.";
 
-    // enforce 1 sentence
+    // Enforce 1 sentence
     reply = reply.split("\n")[0];
     if (reply.includes(".")) reply = reply.split(".")[0] + ".";
 
@@ -47,4 +54,6 @@ Do not explain anything further.
   }
 });
 
-app.listen(3000, () => console.log("🚀 Node server running on http://localhost:3000"));
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`🚀 Node server running on http://localhost:${PORT}`));
