@@ -3,25 +3,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const languageSelect = document.getElementById("language");
   const openAIButton = document.getElementById("openAI");
 
-  // Load saved language and toggle state
-  chrome.storage.sync.get(["language", "extensionEnabled"], (data) => {
-    if (data.language) languageSelect.value = data.language;
-    if (data.extensionEnabled !== undefined)
-      toggle.checked = data.extensionEnabled;
+  chrome.storage.sync.set({ extensionEnabled: true });
+  toggle.checked = true;
 
-    // When loading, immediately translate popup UI into saved language
-    translatePopupUI(languageSelect.value);
+  chrome.storage.sync.get(["language"], (data) => {
+    const lang = data.language || "en";
+    languageSelect.value = lang;
+    translatePopupUI(lang);
   });
 
-  // When user changes language
   languageSelect.addEventListener("change", async () => {
     const selectedLang = languageSelect.value;
     chrome.storage.sync.set({ language: selectedLang });
-
-    // Translate popup text live
     await translatePopupUI(selectedLang);
 
-    // Send message to content script
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       chrome.tabs.sendMessage(tabs[0].id, {
         action: "updateLanguage",
@@ -30,56 +25,69 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Toggle extension on/off
   toggle.addEventListener("change", () => {
-    const enabled = toggle.checked;
-    chrome.storage.sync.set({ extensionEnabled: enabled });
-
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       chrome.tabs.sendMessage(tabs[0].id, {
         action: "toggleExtension",
-        enabled,
+        enabled: toggle.checked,
       });
     });
   });
 
-  // Ask Assistant button
-  openAIButton?.addEventListener("click", () => {
+  openAIButton.addEventListener("click", () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       chrome.tabs.sendMessage(tabs[0].id, { action: "openSidebar" });
     });
   });
 });
 
-// ============================
-// 🔤 TRANSLATION HELPERS
-// ============================
-
-// Calls FastAPI backend
+// ==========================
+// 🔤 SAFE TRANSLATION HELPERS
+// ==========================
 async function translateTextPopup(text, targetLang) {
   try {
-    const res = await fetch("http://localhost:8000/translate", {
+    const res = await fetch("http://127.0.0.1:8000/translate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text, target_language: targetLang }),
     });
-
     const data = await res.json();
-    console.log("Backend response:", data);
     return data.translatedText || text;
   } catch (e) {
-    console.warn("Popup translation failed:", e);
+    console.warn("⚠️ Popup translation failed:", e);
     return text;
   }
 }
 
-// Loops through all UI elements and translates them
 async function translatePopupUI(lang) {
-  const elements = document.querySelectorAll(".immigrant-text");
-  for (const el of elements) {
-    const original = el.dataset.originalText || el.textContent;
-    el.dataset.originalText = original;
-    el.textContent = await translateTextPopup(original, lang);
+  console.log("🌐 Translating popup to:", lang);
+
+  // Only translate labels, title, and button
+  const title = document.querySelector("h2");
+  const labelLang = document.querySelector('label[for="language"]');
+  const labelToggle = document.querySelector(".toggle-container label");
+  const askButton = document.getElementById("openAI");
+
+  const texts = {
+    title: "Immigrant Assistant",
+    labelLang: "Language:",
+    labelToggle: "Enable Extension",
+    askButton: "Ask Assistant 💬",
+  };
+
+  try {
+    const [t1, t2, t3, t4] = await Promise.all([
+      translateTextPopup(texts.title, lang),
+      translateTextPopup(texts.labelLang, lang),
+      translateTextPopup(texts.labelToggle, lang),
+      translateTextPopup(texts.askButton, lang),
+    ]);
+
+    title.textContent = `🌎 ${t1}`;
+    labelLang.textContent = t2;
+    labelToggle.textContent = t3;
+    askButton.textContent = t4;
+  } catch (e) {
+    console.error("❌ Error translating popup:", e);
   }
 }
-

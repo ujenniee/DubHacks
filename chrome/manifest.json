@@ -5,8 +5,8 @@
   "description": "Helps translate and guide immigrants on any page",
   "permissions": ["storage", "activeTab", "scripting"],
   "action": {
-  "default_popup": "popup.html"
-},
+    "default_popup": "popup.html"
+  },
   "background": {
     "service_worker": "background.js"
   },

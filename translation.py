@@ -1,18 +1,13 @@
-import os
-os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
-os.environ["CUDA_VISIBLE_DEVICES"] = ""
-os.environ["USE_MPS"] = "0"
-
-import torch
-torch.set_default_device("cpu")
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from typing import Optional
 from transformers import pipeline
+import torch
+
 app = FastAPI()
 
-
+# Allow Chrome extension requests
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -24,7 +19,7 @@ app.add_middleware(
 class TranslateRequest(BaseModel):
     text: str
     target_language: str
-    source_language: str = None   # Python 3.9 compatible
+    source_language: Optional[str] = None
 
 @app.get("/")
 def root():
@@ -34,36 +29,27 @@ def root():
 def translate_text(req: TranslateRequest):
     src = (req.source_language or "en").lower()
     tgt = req.target_language.lower()
+    device = "cpu"  # avoid meta tensor errors
 
     try:
         if src == tgt:
             return {"translatedText": req.text}
 
-        # Choose model
+        # Direct translations or via English bridge
         if src == "en":
             model_name = f"Helsinki-NLP/opus-mt-en-{tgt}"
         elif tgt == "en":
             model_name = f"Helsinki-NLP/opus-mt-{src}-en"
         else:
-            # Chain: source → en → target
             mid_pipe = pipeline("translation", model=f"Helsinki-NLP/opus-mt-{src}-en", device=-1)
-            mid_text = mid_pipe(req.text, max_length=512)[0]["translation_text"]
-
-            pipe = pipeline(
-    "translation",
-    model=model_name,
-    device=-1,  # force CPU
-    framework="pt",  # use PyTorch backend
-)
-
-            result = pipe(mid_text, max_length=512)
+            mid_text = mid_pipe(req.text)[0]["translation_text"]
+            pipe = pipeline("translation", model=f"Helsinki-NLP/opus-mt-en-{tgt}", device=-1)
+            result = pipe(mid_text)
             return {"translatedText": result[0]["translation_text"]}
 
-        # Direct translation
-        pipe = pipeline("translation", model=model_name, device=-1)  # 👈 force CPU
-        out = pipe(req.text, max_length=512)
+        pipe = pipeline("translation", model=model_name, device=-1)
+        out = pipe(req.text)
         return {"translatedText": out[0]["translation_text"]}
-
     except Exception as e:
         print("❌ Translation error:", e)
         return {"error": str(e)}
