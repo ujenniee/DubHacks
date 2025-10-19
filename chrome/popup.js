@@ -60,34 +60,19 @@ async function translateTextPopup(text, targetLang) {
 }
 
 async function translatePopupUI(lang) {
-  console.log("🌐 Translating popup to:", lang);
+  const elements = document.querySelectorAll(".immigrant-text");
 
-  // Only translate labels, title, and button
-  const title = document.querySelector("h2");
-  const labelLang = document.querySelector('label[for="language"]');
-  const labelToggle = document.querySelector(".toggle-container label");
-  const askButton = document.getElementById("openAI");
+  for (const el of elements) {
+    // skip elements marked "data-no-translate"
+    if (el.hasAttribute("data-no-translate")) continue;
 
-  const texts = {
-    title: "NextStep Assistant",
-    labelLang: "Language:",
-    labelToggle: "Enable Extension",
-    askButton: "Ask Assistant 💬",
-  };
+    const original = el.dataset.originalText || el.textContent;
+    el.dataset.originalText = original;
 
-  try {
-    const [t1, t2, t3, t4] = await Promise.all([
-      translateTextPopup(texts.title, lang),
-      translateTextPopup(texts.labelLang, lang),
-      translateTextPopup(texts.labelToggle, lang),
-      translateTextPopup(texts.askButton, lang),
-    ]);
-
-    title.textContent = `🌎 ${t1}`;
-    labelLang.textContent = t2;
-    labelToggle.textContent = t3;
-    askButton.textContent = t4;
-  } catch (e) {
-    console.error("❌ Error translating popup:", e);
+    try {
+      el.textContent = await translateTextPopup(original, lang);
+    } catch (err) {
+      console.warn("⚠️ Skipped element:", el, err);
+    }
   }
 }
