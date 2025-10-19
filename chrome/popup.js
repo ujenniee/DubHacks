@@ -68,12 +68,6 @@ async function translatePopupUI(lang) {
   const labelToggle = document.querySelector(".toggle-container label");
   const askButton = document.getElementById("openAI");
 
-  const texts = {
-    title: "Immigrant Assistant",
-    labelLang: "Language:",
-    labelToggle: "Enable Extension",
-    askButton: "Ask Assistant 💬",
-  };
 
   try {
     const [t1, t2, t3, t4] = await Promise.all([

@@ -3,29 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NextStep - Sign Up</title>
+  <title>NextStep - Assistant</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* --- Feature Boxes Section --- */
+    .feature-boxes {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      min-height: calc(100vh - 120px); /* centers below navbar */
+      margin: 0 auto;
+      max-width: 1000px;
+      padding: 0 1rem;
+    }
+
+    .feature-box {
+      flex: 1 1 300px;
+      max-width: 400px;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      cursor: default;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(102, 126, 234, 0.25);
+      border-color: #667eea;
+    }
+
+    /* Clickable box */
+    .feature-box.link {
+      cursor: pointer;
+    }
+
+    .feature-box h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: #667eea;
+    }
+
+    .feature-box p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* Responsive stacking */
+    @media (max-width: 700px) {
+      .feature-boxes {
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <nav id="navbar">
-        <div class="nav-container">
-             <a href="home.html" class="logo">NextStep</a>
-            <ul class="nav-links">
-                <li><a href="assist.html">Download AI Resume Assistant </a></li>
-                <li><a href="buildResume.html">Build Resume</a></li>
-                <li><a href="jobFinder.html">Job Finder</a></li>
-                <li><a href="signUp.html">Sign Up</a></li>
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="home.html" class="logo">NextStep</a>
+      <ul class="nav-links">
+        <li><a href="assist.html">Download AI Resume Assistant</a></li>
+        <li><a href="buildResume.html">Build Resume</a></li>
+        <li><a href="jobFinder.html">Job Finder</a></li>
+        <li><a href="signUp.html">Sign Up</a></li>
         <li class="language-dropdown">
-                    <a href="#">Language ▾</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">English</a></li>
-                        <li><a href="#">Spanish</a></li>
-                        <li><a href="#">French</a></li>
-                    </ul>
-                </li>
-                
-            </ul>
-        </div>
-    </nav>
+          <a href="#">Language ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">English</a></li>
+            <li><a href="#">Spanish</a></li>
+            <li><a href="#">French</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="feature-boxes">
+    <div class="feature-box">
+      <h3>Work in Progress</h3>
+      <p>Chrome Extension</p>
+    </div>
+
+    <!-- Clickable Personal Assistant box -->
+    <div class="feature-box link" onclick="window.location.href='backend/sidebar.html'">
+      <h3>Work in Progress</h3>
+      <p>Personal Assistant</p>
+    </div>
+  </section>
 </body>
 </html>
