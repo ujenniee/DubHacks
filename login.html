@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NextStep - Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="home.html" class="logo">NextStep</a>
+      <ul class="nav-links">
+        <li><a href="#download">Download Chrome</a></li>
+        <li><a href="#contact">Build Resume</a></li>
+        <li><a href="jobFinder.html">Job Finder</a></li>
+        <li><a href="signUp.html">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="login-section">
+    <div class="login-container">
+      <h1 class="login-title">Welcome Back</h1>
+      <p class="login-subtitle">Log in to access your account and apply for jobs.</p>
+
+      <form class="login-form" id="loginForm">
+        <div class="form-box">
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="submit-btn">Log In</button>
+
+          <!-- Sign Up Link -->
+          <p style="text-align:center; margin-top:1rem;">
+            Don’t have an account?
+            <a href="signUp.html" style="color:#667eea;">Sign Up</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById('email').value;
+    localStorage.setItem('nextStepUser', email);
+
+    alert('Login successful! Welcome back to NextStep.');
+    window.location.href = 'home.html';
+  });
+</script>
+
+
+</body>
+</html>
