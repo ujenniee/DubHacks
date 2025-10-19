@@ -1,116 +1,4 @@
 /* tam's css */
-/* tam's css */
-/* Download Page Specific Styles */
-.download-section {
-    max-width: 1400px;
-    margin: 4rem auto;
-    padding: 2rem;
-}
-
-
-.download-card {
-    position: relative;
-}
-
-
-.popular-badge {
-    position: absolute;
-    top: -12px;
-    right: 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-}
-
-
-.download-icon {
-    width: 60px;
-    height: 60px;
-}
-
-
-.download-icon svg {
-    width: 35px;
-    height: 35px;
-}
-
-
-.download-button {
-    width: 100%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    padding: 0.9rem 1.5rem;
-    border-radius: 10px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1.5rem;
-}
-
-
-.download-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-}
-
-
-.download-button:active {
-    transform: translateY(0);
-}
-
-
-.download-icon-small {
-    width: 20px;
-    height: 20px;
-}
-
-
-.version-text {
-    text-align: center;
-    color: #718096;
-    font-size: 0.85rem;
-    margin-top: 0.8rem;
-}
-
-
-/* Requirements Section */
-.requirements-section {
-    max-width: 1400px;
-    margin: 2rem auto 4rem;
-    padding: 2rem;
-}
-
-
-.requirements-grid {
-    gap: 1.5rem;
-}
-
-
-.requirement-card {
-    text-align: center;
-    padding: 1.5rem;
-}
-
-
-.requirement-card h3 {
-    font-size: 1.3rem;
-    color: #2d3748;
-    margin-bottom: 0.8rem;
-}
-
-
-.requirement-card .card-description {
-    font-size: 1rem;
-}
 
 
 .user-display {
@@ -1376,7 +1264,7 @@ body {
 .application-subtitle {
   font-size: 1rem;
   margin-bottom: 2rem;
-  color: black;
+  color: #e2e8f0;
 }
 
 
@@ -1804,6 +1692,19 @@ footer {
         font-size: 0.9rem;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
