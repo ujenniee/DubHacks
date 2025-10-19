@@ -1,1 +1,17 @@
+# Ignore virtual environments and caches
 venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Hugging Face / transformer caches
+.cache/
+huggingface/
+transformers_cache/
+hf_home/
+torch/
+
+# macOS and VS Code junk
+.DS_Store
+.vscode/
