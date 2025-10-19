@@ -16,26 +16,55 @@
   box-sizing: border-box;
   transition: all 0.3s ease;
   cursor: default;
+  overflow: hidden;
 }
 
-/* Collapsed state */
+/* Resize handle */
+#resize-handle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  cursor: nwse-resize;
+  background: transparent;
+  z-index: 1000000;
+}
+
+/* --- FIXED COLLAPSED STATE --- */
 #assistant.collapsed {
-  width: 50px;
-  height: 50px;
-  padding: 5px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  min-height: 60px;
+  max-width: 60px;
+  max-height: 60px;
+  background-color: #667eea;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 999999;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* Chat bubble icon */
+#assistant.collapsed::after {
+  content: "💬";
+  font-size: 22px;
+  pointer-events: none;
 }
 
 /* Hide all inner content when collapsed */
-#assistant.collapsed h2,
-#assistant.collapsed textarea,
-#assistant.collapsed #send,
-#assistant.collapsed #response {
-  display: none;
+#assistant.collapsed * {
+  display: none !important;
 }
 
 /* Close button */
