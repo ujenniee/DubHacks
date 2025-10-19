@@ -7,6 +7,7 @@
 </head>
 <body>
   <div id="assistant">
+    <div id="resize-handle"></div> <!-- Resize handle -->
     <button id="close-sidebar">✖</button>
     <h2>Hi, I'm your Assistant!</h2>
     <textarea id="input" placeholder="Ask me anything..."></textarea>
@@ -17,24 +18,28 @@
   <script>
     const assistant = document.getElementById("assistant");
     const closeBtn = document.getElementById("close-sidebar");
+    const inputBox = document.getElementById("input");
+    const sendBtn = document.getElementById("send");
 
     // Toggle collapsed state
     closeBtn.onclick = (e) => {
-      e.stopPropagation(); // prevent bubbling
+      e.stopPropagation();
       assistant.classList.toggle("collapsed");
     };
 
-    // Click collapsed assistant to expand
+    // Expand when clicking collapsed
     assistant.addEventListener("click", () => {
       if (assistant.classList.contains("collapsed")) {
         assistant.classList.remove("collapsed");
       }
     });
 
-    // Send message to server
-    document.getElementById("send").onclick = async () => {
-      const input = document.getElementById("input").value;
+    // Send message
+    async function sendMessage() {
+      const input = inputBox.value.trim();
       const responseBox = document.getElementById("response");
+      if (!input) return;
+
       responseBox.textContent = "Thinking...";
 
       try {
@@ -47,12 +52,52 @@
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
         responseBox.textContent = data.reply || "No response.";
-        document.getElementById("input").value = "";
-
+        inputBox.value = "";
       } catch (err) {
         responseBox.textContent = "Error: " + err.message;
       }
-    };
+    }
+
+    sendBtn.onclick = sendMessage;
+
+    // Allow Enter to send, Shift+Enter for new line
+    inputBox.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    // Resize logic
+    const resizeHandle = document.getElementById("resize-handle");
+    let isResizing = false;
+    let startX, startY, startWidth, startHeight;
+
+    resizeHandle.addEventListener("mousedown", (e) => {
+      e.preventDefault();
+      isResizing = true;
+      startX = e.clientX;
+      startY = e.clientY;
+      startWidth = assistant.offsetWidth;
+      startHeight = assistant.offsetHeight;
+
+      document.addEventListener("mousemove", resize);
+      document.addEventListener("mouseup", stopResize);
+    });
+
+    function resize(e) {
+      if (!isResizing) return;
+      const dx = startX - e.clientX;
+      const dy = startY - e.clientY;
+      assistant.style.width = `${startWidth + dx}px`;
+      assistant.style.height = `${startHeight + dy}px`;
+    }
+
+    function stopResize() {
+      isResizing = false;
+      document.removeEventListener("mousemove", resize);
+      document.removeEventListener("mouseup", stopResize);
+    }
   </script>
 </body>
 </html>
