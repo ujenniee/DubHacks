@@ -47,7 +47,7 @@ def translate_text(req: TranslateRequest):
             result = pipe(mid_text)
             return {"translatedText": result[0]["translation_text"]}
 
-        pipe = pipeline("translation", model=model_name, device=-1)
+        pipe = pipeline("translation", model=model_name, device=torch.device("cpu"))
         out = pipe(req.text)
         return {"translatedText": out[0]["translation_text"]}
     except Exception as e:
