@@ -9,21 +9,13 @@
 <body>
     <nav id="navbar">
         <div class="nav-container">
-             <a href="home.html" class="logo">NextStep</a>
+            <a href="home.html" class="logo">NextStep</a>
             <ul class="nav-links">
                 <li><a href="#download">Download Chrome </a></li>
                 <li><a href="#contact">Build Resume</a></li>
                 <li><a href="jobFinder.html">Job Finder</a></li>
                 <li><a href="signUp.html">Sign Up</a></li>
-        <li class="language-dropdown">
-                    <a href="#">Language ▾</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">English</a></li>
-                        <li><a href="#">Spanish</a></li>
-                        <li><a href="#">French</a></li>
-                    </ul>
-                </li>
-                
+                <li id="userDisplay" class="user-display"></li>
             </ul>
         </div>
     </nav>
@@ -70,62 +62,84 @@
         </div>
     </section>
 
-    <!-- Job Search & Filters -->
-    <section class="search-section">
-        <div class="container">
-            <h2 class="section-title">Search Jobs</h2>
-            <div class="search-container">
-                <div class="search-box">
-                    <input type="text" placeholder="Job title, keywords, or company..." class="search-input">
-                    <button class="search-btn">Search</button>
+<!-- Job Search & Filters -->
+<section class="search-section">
+    <div class="container">
+        <h2 class="section-title">Search Jobs</h2>
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Job title, keywords, or company..." class="search-input">
+                <button class="search-btn" id="searchBtn">Search</button>
+            </div>
+            
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label>Location</label>
+                    <select class="filter-select" id="locationFilter">
+                        <option value="">Any Location</option>
+                        <option value="Remote">Remote</option>
+                        <option value="New York, NY">New York, NY</option>
+                        <option value="San Francisco, CA">San Francisco, CA</option>
+                        <option value="Seattle, WA">Seattle, WA</option>
+                        <option value="Austin, TX">Austin, TX</option>
+                    </select>
                 </div>
                 
-                <div class="filters-grid">
-                    <div class="filter-group">
-                        <label>Location</label>
-                        <select class="filter-select">
-                            <option>Any Location</option>
-                            <option>Remote</option>
-                            <option>New York, NY</option>
-                            <option>San Francisco, CA</option>
-                            <option>Seattle, WA</option>
-                            <option>Austin, TX</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label>Industry</label>
-                        <select class="filter-select">
-                            <option>All Industries</option>
-                            <option>Technology</option>
-                            <option>Healthcare</option>
-                            <option>Education</option>
-                            <option>Finance</option>
-                            <option>Marketing</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label>Experience Level</label>
-                        <select class="filter-select">
-                            <option>All Levels</option>
-                            <option>Entry Level</option>
-                            <option>Mid Level</option>
-                            <option>Senior Level</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label>Work Authorization</label>
-                        <select class="filter-select">
-                            <option>All Options</option>
-                            <option>Visa Sponsorship Available</option>
-                            <option>Accepts International Applicants</option>
-                            <option>US Citizens Only</option>
-                        </select>
-                    </div>
+                <div class="filter-group">
+                    <label>Industry</label>
+                    <select class="filter-select" id="industryFilter">
+                        <option value="">All Industries</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Education">Education</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Marketing">Marketing</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Experience Level</label>
+                    <select class="filter-select" id="experienceFilter">
+                        <option value="">All Levels</option>
+                        <option value="Entry Level">Entry Level</option>
+                        <option value="Mid Level">Mid Level</option>
+                        <option value="Senior Level">Senior Level</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Work Authorization</label>
+                    <select class="filter-select" id="authorizationFilter">
+                        <option value="">All Options</option>
+                        <option value="Visa Sponsorship Available">Visa Sponsorship Available</option>
+                        <option value="Accepts International Applicants">Accepts International Applicants</option>
+                        <option value="US Citizens Only">US Citizens Only</option>
+                    </select>
                 </div>
             </div>
+
+            <button class="clear-filters-btn" id="clearFilters">Clear All Filters</button>
+        </div>
+
+        <!-- Results Display -->
+        <div class="results-container">
+            <div class="results-header">
+                <h2 class = "title-results">Job Results</h2>
+                <span class="results-count" id="resultsCount">0 jobs found</span>
+            </div>
+            <div class="jobs-grid" id="jobsGrid">
+                <!-- Jobs will be displayed here -->
+            </div>
+            <div class="no-results" id="noResults" style="display: none;">
+                <p>No jobs match your search criteria. Try adjusting your filters.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+            
 
             <!-- Job Alerts -->
             <div class="alert-box">
@@ -165,7 +179,7 @@
     <!-- Job Listings -->
     <section class="jobs-section">
         <div class="container">
-            <h2 class="section-title">Recommended Jobs</h2>
+            <h2 class="section-title">Popular Jobs</h2>
             
             <div class="job-card">
                 <div class="job-header">
@@ -311,3 +325,5 @@
             </div>
         </div>
     </footer>
+     <script src="jobFinder.js"></script>
+</html>
