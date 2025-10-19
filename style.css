@@ -71,16 +71,79 @@ nav {
     transform: translateY(0);
 }
 
+/* icon */
+.mission-image {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+.mission-image img {
+  width: 700px;          /* or whatever larger size you want */
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+
+  margin-top: 0.5rem;   /* reduce this to bring image closer to text */
+}
+
+
+
+
+/* application on home page */
+.submit-application-now {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.application-container {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem 3rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.application-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 1rem;
+}
+
+.application-sub {
+    font-size: 1rem;
+    color: #000; /* changed from #4a5568 (gray) to black */
+    margin-bottom: 2rem;
+}
+
+
+.apply-now-btn {
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.apply-now-btn:hover {
+    transform: scale(1.05);
+}
+
+
 
 /* Testimonials Section */
 .testimonials {
     max-width: 1400px;
-    margin: 4rem auto;
+    margin: 2rem auto;
     padding: 2rem;
 }
 
 .section-title {
-    padding-top: 60px;
+    padding-top: 40px;
     text-align: center;
     font-size: 2.5rem;
     color: white;
@@ -172,6 +235,22 @@ nav {
     line-height: 1.6;
     font-size: 0.95rem;
 }
+
+.team-image {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.team-image img {
+  width: 100%;        /* fills the .team-card width */
+  max-width: 800px;   /* increase max width */
+  height: auto;
+  border-radius: 16px; /* rounded corners */
+  object-fit: cover;   /* keeps image proportionate */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+
 
         /* Our Mission Section */
         .mission-section, .team-section {
