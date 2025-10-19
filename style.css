@@ -514,7 +514,7 @@ nav {
 
 .title-results {
     font-size: 24px;
-    color: #1f2937;
+    color: white;
     margin: 0;
     position: absolute;
     left: 50%;
@@ -826,11 +826,10 @@ nav {
     transform: scale(1.05);
 }
 
-/* Match Widget */
 .match-section {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
 }
-
 .match-widget {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
